@@ -1,0 +1,110 @@
+<html>
+    
+
+    <style>
+        body{
+
+            background-image: url("http://getwallpapers.com/wallpaper/full/5/e/c/92483.jpg");
+            text-align:center;
+        }
+
+        #myCanvas{
+
+background-color: aliceblue;
+
+        }
+
+        p{
+margin-right: 20px;
+            
+        }
+    </style>
+    
+    <body>
+        <canvas id = "myCanvas" width="800" height="600" ></canvas><br>    <span><input type = "number" id = "radiuslabel"></span><p>Radius</p>
+    <input type = "number" id = "widthlabel"><p>Line Width</p>
+    <span><input type = "text" id = "colorlabel"></span><p>Color</p>
+    </body>
+    <script>
+            var mouseEvent;
+            canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            var col;
+            var wid;
+            var rad;
+            
+            canvas.addEventListener("mousedown",my_mousedown);
+            
+            function my_mousedown(e)
+            {
+            
+           
+            mouseEvent = "mouseDown";
+            }
+            
+            canvas.addEventListener("mouseup",my_mouseup);
+            
+            function my_mouseup(e)
+            {
+            
+                mouseEvent = "mouseUp";
+            
+            }
+            
+            canvas.addEventListener("mouseleave",my_mouseleave);
+            
+            
+            
+            
+            function my_mouseleave(e)
+            {
+            
+                mouseEvent = "mouseLeave";
+                
+            }
+
+            canvas.addEventListener("mousemove",my_mousemove);
+            
+            function my_mousemove(e){
+            
+                xpos = e.clientX - canvas.offsetLeft;
+                ypos = e.clientY + 100;
+            
+                if (mouseEvent = "mouseDown"){
+            console.log("Coords =");
+            console.log("x = " + xpos + " & y= " + ypos);
+            ctx.beginPath();
+            ctx.strokeStyle = document.getElementById("colorlabel").value;
+            ctx.lineWidth = document.getElementById("widthlabel").value;
+            ctx.arc(xpos, ypos, document.getElementById("radiuslabel").value, 0, 2*Math.PI);
+            ctx.stroke();
+            }
+            }
+            
+                </script>
+</html>
+
+<!--Create your own simple web page.
+Apply the background image of the body tag.
+Add a canvas tag in the HTML. 
+In the HTML, add 3 text inputs for radius, color and width of the line.
+Declare a variable mouseEvent with an empty value.
+In javascript, first store the canvas element inside a variable and create a reference of the canvas variable
+This reference will be used for drawing on canvas.
+
+Define variables to store the color, radius and width
+Add an event listener command for mousedown.
+Create a function called my_mousedown and set the variable value of color, width_of_line and radius from the text input.
+Set variable mouseevent value to “mousedown”.
+Add an event listener command for mouseup
+Create a function called my_mouseup
+Set the variable mouseevent value to “mouseup”.
+Add an event listener command for mouseleave
+Create a function called my_mouseup.
+Set the variable mouseevent value to “mouseleave”.
+Add an event listener command for mousemove
+Create a function called my_mousemoveb>.
+Set the variable mouseevent value to “mouseleave”.
+Store the current x and y coordinates to the variable.
+.If the mouseEvent is mouseDown, then draw circles -->
+
